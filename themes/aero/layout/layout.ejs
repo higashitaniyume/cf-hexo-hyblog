@@ -5,9 +5,28 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>
-        <%= config.title %>
+        <%= page.title ? page.title + ' | ' + config.title : config.title %>
     </title>
     <%- css('css/style.css') %>
+    <!-- Open Graph / SEO -->
+    <meta property="og:title" content="<%= page.title || config.title %>">
+    <meta property="og:description" content="<%= page.description || config.description %>">
+    <meta property="og:url" content="<%= config.url %><%= url_for(page.path) %>">
+    <meta property="og:site_name" content="<%= config.title %>">
+    <meta property="og:type" content="<%= page.layout === 'post' ? 'article' : 'website' %>">
+    <meta property="og:locale" content="<%= config.language %>">
+    <% if (page.cover) { %>
+    <meta property="og:image" content="<%= page.cover.startsWith('http') ? page.cover : config.url + url_for(page.cover) %>">
+    <% } %>
+    <!-- Twitter Card -->
+    <% if (page.cover) { %>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="<%= page.cover.startsWith('http') ? page.cover : config.url + url_for(page.cover) %>">
+    <% } else { %>
+    <meta name="twitter:card" content="summary">
+    <% } %>
+    <meta name="twitter:title" content="<%= page.title || config.title %>">
+    <meta name="twitter:description" content="<%= page.description || config.description %>">
     <% if (theme.favicon.enable) { %>
         <% if (theme.favicon.icon) { %>
             <link rel="icon" href="<%= url_for(theme.favicon.icon) %>">
