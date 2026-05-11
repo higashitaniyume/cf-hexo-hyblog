@@ -1,0 +1,25 @@
+menu:
+  about: /about
+favicon:
+  enable: true
+  icon: /image/icon/vista_messenger.jpg
+profile:
+  enable: true
+  author: Yume
+  avatar: /image/avatar.webp
+  avatar_link: https://vlnc.top/github
+  social:
+    - name: Github
+      link: https://vlnc.top/github
+      icon: /image/icon/github.png
+music:
+  enable: true
+  autoplay: false
+  songs:
+    - title: ''
+      artist: ''
+      cover: ''
+      url: ''
+math:
+  enable: true
+  engine: mathjax
